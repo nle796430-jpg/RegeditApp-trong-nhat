@@ -1,0 +1,10 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'com.example.antilag'
+    compileSdk 34
+    defaultConfig { 
+        applicationId "com.example.antilag"
+        minSdk 24
+        targetSdk 34
+    }
+}
