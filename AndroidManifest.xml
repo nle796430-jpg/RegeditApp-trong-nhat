@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://android.com"
+    package="com.example.antilag">
+
+    <!-- Cấp quyền chạy dịch vụ ẩn nền vĩnh viễn không bị Android kill -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <!-- Định cấu hình ứng dụng không hiển thị giao diện (Chạy ẩn hoàn toàn) -->
+    <application
+        android:allowBackup="true"
+        android:label="AntiLag System"
+        android:theme="@android:style/Theme.NoDisplay">
+        
+        <!-- Khai báo file Main kích hoạt ứng dụng -->
+        <activity 
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Khai báo dịch vụ chạy ngầm liên tục để giữ file .so hoạt động khi chơi game -->
+        <service 
+            android:name=".AntiLagService"
+            android:foregroundServiceType="specialUse"
+            android:exported="false" />
+            
+    </application>
+</manifest>
+
