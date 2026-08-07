@@ -1,0 +1,14 @@
+name: Build APK
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with: { distribution: 'zulu', java-version: '17' }
+    - run: gradle wrapper --gradle-version 8.5
+    - run: ./gradlew assembleDebug
+    - uses: actions/upload-artifact@v4
+      with: { name: AntiLag-Game-APK, path: '**/app-debug.apk' }
+      
