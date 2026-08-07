@@ -1,4 +1,5 @@
 plugins { id 'com.android.application' }
+
 android {
     namespace 'com.example.antilag'
     compileSdk 34
@@ -6,5 +7,11 @@ android {
         applicationId "com.example.antilag"
         minSdk 24
         targetSdk 34
+    }
+    // Dòng này giúp Gradle hiểu file .so nằm ngay ở thư mục gốc
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['.']
+        }
     }
 }
